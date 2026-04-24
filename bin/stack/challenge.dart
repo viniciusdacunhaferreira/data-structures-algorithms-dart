@@ -41,9 +41,7 @@ bool isBalancedWithoutStack(String text) {
     if (sum.isNegative) return false;
   }
 
-  if (sum != 0) return false;
-
-  return true;
+  return sum == 0;
 }
 
 bool isBalancedWithStack(String text) {
