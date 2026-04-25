@@ -4,7 +4,7 @@ import 'package:dsad/complexity.dart';
 import 'utils/names.dart';
 
 class LinearAlgorithmBenchmark extends BenchmarkBase {
-  const LinearAlgorithmBenchmark(String name, this.data) : super(name);
+  const LinearAlgorithmBenchmark(super.name, this.data);
 
   final List<String> data;
 
