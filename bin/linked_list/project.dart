@@ -1,12 +1,15 @@
 import 'package:dsad/linked_list.dart';
 
 void main() {
-  final node1 = Node(value: 1);
-  final node2 = Node(value: 2);
-  final node3 = Node(value: 3);
+  final list = LinkedList<int>()
+    ..push(3)
+    ..push(2)
+    ..push(1);
 
-  node1.next = node2;
-  node2.next = node3;
+  print('Before: $list');
 
-  print(node1);
+  Node<int> middleNode = list.nodeAt(1)!;
+  list.insertAfter(middleNode, 42);
+
+  print('After: $list');
 }
