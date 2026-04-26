@@ -55,6 +55,43 @@ class LinkedList<E> {
     return node.next!;
   }
 
+  E? pop() {
+    final value = head?.value;
+
+    head = head?.next;
+    if (isEmpty) tail = null;
+
+    return value;
+  }
+
+  E? removeLast() {
+    if (head?.next == null) return pop();
+
+    Node<E> currentNode = head!;
+
+    while (currentNode.next != tail) {
+      currentNode = currentNode.next!;
+    }
+
+    final value = tail!.value;
+    tail = currentNode;
+    tail!.next = null;
+
+    return value;
+  }
+
+  E? removeAfter(Node<E> node) {
+    final value = node.next?.value;
+
+    if (node.next == tail) {
+      tail = node;
+    }
+
+    node.next = node.next?.next;
+
+    return value;
+  }
+
   @override
   String toString() {
     if (isEmpty) return 'Empty list';
