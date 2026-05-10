@@ -12,6 +12,10 @@ void main() {
 
   print('\nFind the middle node');
   print('Middle node value: ${middleNode(list)?.value}');
+
+  print('\nReverse a Linked List');
+  print('Linked list: $list');
+  print('Reversed linked list: ${reverseList(list)}');
 }
 
 void printInReverse(LinkedList<int> list) {
@@ -35,4 +39,23 @@ Node<E>? middleNode<E>(LinkedList<E> list) {
   }
 
   return slow;
+}
+
+LinkedList<E> reverseList<E>(LinkedList<E> list) {
+  Node<E>? prev = list.head;
+  Node<E>? curr = list.head?.next;
+  Node<E>? next = list.head?.next?.next;
+
+  list.head = list.tail;
+  list.tail = prev?..next=null;
+
+  while (curr != null) {
+    curr.next = prev;
+
+    prev = curr;
+    curr = next;
+    next = next?.next;
+  }
+
+  return list;
 }
