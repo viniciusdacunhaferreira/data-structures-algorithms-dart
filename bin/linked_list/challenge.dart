@@ -26,5 +26,13 @@ extension RecursiveNode<E> on Node<E> {
 }
 
 Node<E>? middleNode<E>(LinkedList<E> list) {
-  return list.nodeAt((list.length / 2).floor());
+  Node<E>? fast = list.head;
+  Node<E>? slow = list.head;
+
+  while (fast?.next != null) {
+    fast = fast?.next?.next;
+    slow = slow?.next;
+  }
+
+  return slow;
 }
