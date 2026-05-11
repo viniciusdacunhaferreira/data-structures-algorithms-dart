@@ -42,20 +42,20 @@ Node<E>? middleNode<E>(LinkedList<E> list) {
 }
 
 LinkedList<E> reverseList<E>(LinkedList<E> list) {
-  Node<E>? prev = list.head;
-  Node<E>? curr = list.head?.next;
-  Node<E>? next = list.head?.next?.next;
+  Node<E>? prev;
+  Node<E>? curr = list.head;
 
-  list.head = list.tail;
-  list.tail = prev?..next=null;
+  list.tail = curr;
 
   while (curr != null) {
+    final Node<E>? next = curr.next;
     curr.next = prev;
 
     prev = curr;
     curr = next;
-    next = next?.next;
   }
+
+  list.head = prev;
 
   return list;
 }
