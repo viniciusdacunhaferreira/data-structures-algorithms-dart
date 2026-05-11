@@ -16,6 +16,12 @@ void main() {
   print('\nReverse a Linked List');
   print('Linked list: $list');
   print('Reversed linked list: ${reverseList(list)}');
+
+  print('\nRemove All Occurrences');
+  print('Original list: $list');
+  print(
+    'List after removing all occurrences of 2: ${removeOccurrence(2, list)}',
+  );
 }
 
 void printInReverse(LinkedList<int> list) {
@@ -50,12 +56,31 @@ LinkedList<E> reverseList<E>(LinkedList<E> list) {
   while (curr != null) {
     final Node<E>? next = curr.next;
     curr.next = prev;
-
     prev = curr;
     curr = next;
   }
 
   list.head = prev;
+
+  return list;
+}
+
+LinkedList<E> removeOccurrence<E>(E value, LinkedList<E> list) {
+  Node<E>? prev;
+  Node<E>? curr = list.head;
+
+  while (curr != null) {
+    final Node<E>? next = curr.next;
+
+    if (curr.value == value) {
+      if (curr == list.head) list.head = next;
+      if (curr == list.tail) list.tail = prev;
+      prev?.next = next;
+    } else {
+      prev = curr;
+    }
+    curr = next;
+  }
 
   return list;
 }
